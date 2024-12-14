@@ -1,0 +1,45 @@
+{% extends 'CHS_App/base.html' %}
+{% load static %}
+
+{% block ExtraHeaders %}
+  <link rel="stylesheet" href="{% static 'CHS_App/team.css' %}" />
+{% endblock %}
+
+{% block body %}
+  <div class="d-flex justify-content-center align-items-center flex-wrap" style="height: 500px;">
+    <div class="col-12 text-center display-3 mt-5 mb-5">Our Team</div>
+    <div class="t-d border rounded mx-3 my-5">
+      <div class="t-p-d">
+        <img src="https://i.pinimg.com/564x/64/ca/69/64ca6937462946ce4860c99b36f1d26a.jpg" class="p-2" alt="Aneeq-pfp" style="width: inherit" />
+      </div>
+      <div class="t-n-d lead col-12 text-center text-truncate">Aneeq Muneer</div>
+      <div class="t-l-d fs-3 mt-2">
+        <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="https://github.com/AneeqMuneer">
+          <i class="bi bi-github text-dark"></i>
+        </a>
+      </div>
+    </div>
+    <div class="t-d border rounded mx-3 my-5">
+      <div class="t-p-d">
+        <img src="https://i.pinimg.com/564x/f7/f0/0c/f7f00c8a5ac8715043f2859b82ba47b2.jpg" class="p-2" alt="Aneeq-pfp" style="width: inherit" />
+      </div>
+      <div class="t-n-d lead col-12 text-center text-truncate">Ameer Hamza</div>
+      <div class="t-l-d fs-3 mt-2">
+        <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="https://github.com/ameerhamza3463">
+          <i class="bi bi-github text-dark"></i>
+        </a>
+      </div>
+    </div>
+    <div class="t-d border rounded mx-3 my-5">
+      <div class="t-p-d">
+        <img src="https://i.pinimg.com/564x/c2/79/4e/c2794e4501706193fddcbb53b719ff4b.jpg" class="p-2" alt="Aneeq-pfp" style="width: inherit" />
+      </div>
+      <div class="t-n-d lead col-12 text-center text-truncate">Dinesh Dhanji</div>
+      <div class="t-l-d fs-3 mt-2">
+        <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="https://github.com/DineshDhanji">
+          <i class="bi bi-github text-dark"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

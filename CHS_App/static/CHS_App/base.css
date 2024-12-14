@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Bootstrap */
+.nav-link {
+    color: black !important;
+}
+
+/* Bootstrap */
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.allocation_dropdown {
+    background-color: transparent !important;
+    color: black;
+    border: none;
+    padding: 0;
+    margin: 0.5rem 0rem;
+}
+
+.allocation_dropdown:hover {
+    color: black
+}
+
+.allocation_dropdown:focus {
+    color: black
+}

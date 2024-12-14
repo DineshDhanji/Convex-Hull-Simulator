@@ -1,0 +1,88 @@
+.dd1 {
+    height: max-content;
+}
+
+.card-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 11rem;
+}
+
+.algo-container {
+    height: max-content;
+}
+
+.input-div {
+    height: max-content;
+}
+
+.input-contaniner,
+.data-container {
+    height: 20rem;
+    height: 25rem;
+    overflow: auto;
+}
+
+.input-contaniner {
+    height: max-content;
+    overflow: auto;
+}
+
+/* width */
+.data-container::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+/* Track */
+.data-container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+.data-container::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: black;
+}
+
+/* Handle on hover */
+.data-container::-webkit-scrollbar-thumb:hover {
+    background: lightgray;
+}
+
+.bi-x-lg {
+    cursor: pointer;
+}
+
+.bi-x-lg:hover {
+    color: red;
+}
+
+input {
+    height: 2.5rem;
+    border: 1px solid lightgray;
+}
+
+.algo-div {
+    height: 40rem;
+    border-radius: 6px;
+    border: 1px solid lightgray;
+    overflow: hidden;
+}
+
+.dropdown-menu li :active {
+    background-color: #393939;
+}
+
+.complexity-d{
+    height: max-content;
+}
+.complexity-d ul {
+    background-color: transparent !important;
+}
+
+.complexity-d ul li {
+    background-color: transparent !important;
+}

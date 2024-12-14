@@ -1,0 +1,153 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{lipsum} % For generating dummy text, you can remove this package
+
+\title{Project Report: Line Intersection and Convex Hull Algorithms}
+\author{Ameer Hamza, Aneeq Muneer, and Dinesh Dhanjee}
+\date{\today}
+
+\begin{document}
+
+
+\maketitle
+\section{Abstract}
+    The project presents the implementation of three-line intersection algorithms and five convex hull algorithms within a web application developed using Django, HTML, CSS, and JavaScript. The application allows users to input points manually, read from a file, or generate random points. The algorithms are then executed and visualized on the website. The report discusses the programming design, experimental setup, results, and conclusions drawn from the project.
+
+\section{Introduction}
+    The project aims to explore and implement various line intersection and convex hull algorithms. Line intersection algorithms are essential in computer graphics, computational geometry, and other applications. Convex hull algorithms find applications in pattern recognition, image processing, and geographical information systems. The web-based implementation provides an interactive platform for users to visualize and understand these algorithms.
+
+
+\section{Background}
+    \subsection{Convex Hull Problem}
+        The Convex Hull problem stands as a foundational concept in computational geometry, focusing on determining the smallest convex polygon that encompasses a given set of points within the Euclidean plane. More precisely, it is the intersection of all convex sets containing the provided points. Convex hulls find widespread applications in computer graphics, pattern recognition, and robotics.
+
+    \subsection{Convex Hull Problem}
+        The challenge of the Line Intersection problem revolves around establishing whether and where multiple line segments intersect within the Euclidean plane. This problem holds crucial significance in fields like computer graphics, geographic information systems, and computational geometry.
+
+    When presented with a set of line segments denoted as L = {l1, l2, . . . , lm}, where each segment is defined by two endpoints, the objective is to detect all points of intersection among these segments. An intersection is recognized when two line segments share a common point.
+    
+    The Line Intersection problem finds applications in diverse domains, including robotics path planning, computer-aided design, and computational biology. Algorithms are designed to offer accurate and swift solutions for pinpointing intersections within a given set of line segments.
+
+
+\section{Programming Design}
+    In our pursuit of solutions for the Convex Hull and Line Intersection problems, we opted to employ the Django Web development framework with HTML, CSS, and JavaScript and designed algorithms in JavaScript programming language. We chose Django for its scalability, versatility, and the availability of endless resources catering to mathematical computations and geometry.
+
+    \subsection{Choice of Programming Language}
+        JavaScript was chosen as the programming language due to its simplicity, ease of comprehension, and the extensive array of libraries, especially those e.g. “plotly.js” pertaining to computational geometry. JavaScript's expressive syntax enables a succinct and lucid implementation of intricate algorithms, contributing to improved code readability and ease of maintenance.
+
+    \subsection{System Design Diagram}
+        The system design is illustrated in the diagram below, outlining the key components and their interactions:
+        [System Design Diagram ]
+        \begin{figure}
+            \includegraphics[width=1\linewidth]{System Design Diagram.png}
+            \caption{System Design Diagram}
+            \label{fig:enter-label}
+        \end{figure}
+        
+    \subsection{Convex Hull Module}
+        Within the Convex Hull module, we have implemented functions dedicated to solving the Convex Hull problem. This module encompasses well-known algorithms like Graham’s scan, Jarvis march, Quick Hull, Brute Force, and Monotone Chain. It is designed to offer a streamlined interface for calculating the convex hull for a specified set of points.
+
+    \subsection{Line Intersection Module}
+        The Line Intersection module is tailored to address the Line Intersection problem and integrates algorithms such as the CCW, Slope line method, and Cramer's Rule. This module provides methods for identifying and reporting intersections within a set of line segments.
+
+\section{Experimental Setup}
+    We tested the algorithms on a computer with an Intel Core i5 5th Gen processor, 8GB of RAM, and running JavaScript on a Windows system. JavaScript was chosen for its ease of use and the availability of helpful libraries for our computations. We tested on different browsers e.g. Google, Edge etc.
+
+\section{Results and Discussion}
+    We examined the performance of four distinct algorithms—Jarvis March, Graham Scan, Quick Hull, and Brute Force—and conducted a comparative analysis of their speed. Our observations are summarized as follows:
+
+    \begin{enumerate}
+     \item \textbf{Jarvis March:} Known for its simplicity, this algorithm performed adequately on smaller datasets. It operates with a time complexity of $O(n^2)$, where n represents the number of input points. The space complexity is $O(1)$, indicating memory efficiency.
+    
+     \item \textbf{Graham Scan:} Demonstrating robust performance, especially with datasets containing a significant number of points sharing the same y-coordinate, the Graham Scan algorithm has a time complexity of $O(nlogn)$ and a space complexity of $O(n)$, making it efficient for moderate-sized datasets.
+    
+     \item \textbf{Quick Hull:} Notably swift, Quick Hull exhibited impressive speed, particularly on larger datasets. It boasts an average time complexity of $O(nlogn)$ and a worst-case time complexity of $O(n^2)$. The space complexity is $O(n)$, indicating memory efficiency.
+    
+     \item \textbf{Brute Force:} Despite its straightforward approach, the Brute Force algorithm proved inefficient on larger datasets, operating with time complexity of $O(n^3)$ and space complexity of $O(1)$, where $n$ is the number of input points.
+    \end{enumerate}
+    
+    Our discussion aims to elucidate these results, facilitating the decision-making process by considering factors such as algorithm speed and its effectiveness with different data types. These insights provide a clearer understanding of when to deploy each algorithm, aiding others in choosing the most suitable one for their specific requirements.
+
+\section{Conclusion}
+    In summary, our investigation brought to light the strengths and weaknesses inherent in various convex hull algorithms. To provide a succinct overview:
+    \begin{enumerate}
+    \item The simplicity of the Jarvis March algorithm is offset by its diminishing efficiency when applied to larger datasets.
+    \item The Graham Scan algorithm demonstrates commendable performance, particularly with datasets featuring consistent y-coordinates.
+    \item Quick Hull distinguishes itself by delivering robust performance on larger datasets, showcasing its versatility.
+    \item Although straightforward, the Brute Force algorithm proves less efficient when confronted with larger datasets.
+    \end{enumerate}
+    In the majority of scenarios, Quick Hull emerged as the optimal choice, striking a balance between efficiency and adaptability. The decision ultimately hinges on specific characteristics of the data, offering practical insights for algorithm selection based on factors such as dataset size, distribution, and computational efficiency.
+
+\section{References}
+    \begin{enumerate}
+        \item Django\footnote{\url{https://www.djangoproject.com/}}
+        \item Plotly\footnote{\url{https://plotly.com/}}
+        \item Monotone Chain\footnote{\url{https://scholarworks.calstate.edu/downloads/2z10ww05b}}
+        \item Cramer's Rule\footnote{\url{https://www.researchgate.net/publication/255981900_A_comparison_between_Cramer's_Rule_and_a_proposed_2_by_2_Cramer-Elimination_Method_to_solve_systems_of_three_or_more_linear_equations}}
+    \end{enumerate}
+\clearpage
+
+\onecolumn
+
+\section{Appendix - Experimental Screenshots}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{brute_force.png}
+            \caption{Brute Force}
+            \label{fig:brute-force}
+        \end{figure}
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{jarvis_march.png}
+            \caption{Jarvis March}
+            \label{fig:jarvis-march}
+        \end{figure}
+    
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{graham_scan.png}
+            \caption{Graham Scan}
+            \label{fig:graham-scan}
+        \end{figure}
+    
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{quick_hull.png}
+            \caption{Quick Hull}
+            \label{fig:quick-hull}
+        \end{figure}
+    
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{monotone_chain.png}
+            \caption{Monotone Chain}
+            \label{fig:monotone-chain}
+        \end{figure}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{ccw_1.png}
+        \caption{CCW - Not Intersecting }
+        \label{fig:enter-label}
+    \end{figure}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{ccw_2.png}
+        \caption{CCW - Intersecting}
+        \label{fig:enter-label}
+    \end{figure}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{slope_method.png}
+        \caption{Slope Line Method}
+        \label{fig:enter-label}
+    \end{figure}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{cramers_rule.png}
+        \caption{Cramer's Rule}
+        \label{fig:enter-label}
+    \end{figure}
+\end{document}

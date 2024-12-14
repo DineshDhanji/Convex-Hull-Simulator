@@ -1,0 +1,94 @@
+{% extends 'CHS_App/base.html' %}
+{% load static %}
+
+{% block ExtraHeaders %}
+<link href="{% static 'CHS_App/main.css' %}" rel="stylesheet" />
+<script src="{% static 'CHS_App/line_intersection.js' %}"></script>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+{% endblock %}
+
+{% block title %}
+CHS - {{ algorithmTitle }}
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid d-flex justify-content-between flex-wrap my-3">
+  <div class="fs-4 my-3">
+    Algorithm Name: <span class="text-{{ colorScheme }}">{{ algorithmTitle }}</span>
+    {% if research_paper_reference %}
+    <a href="{{ research_paper_reference }}"
+      class="link-body-emphasis link-offset-1 link-underline-opacity-25 link-underline-opacity-75-hover"><span
+        style="font-size: 0.8rem;">Read More</span></a>
+    {% endif %}
+  </div>
+  <div class="my-3 col-lg-4 col-12 justify-content-lg-evenly justify-content-start d-flex">
+    <a href="#graphs-div" class="mx-2"><button type="button" class="btn btn-{{ colorScheme }}"
+        onclick="{{ algorithm }}()">Run Algorithm 🚀</button></a>
+    <button type="button" class="btn btn-outline-{{ colorScheme }} mx-1" onclick="random_lines()">Random Lines</button>
+  </div>
+</div>
+<div class="container-fluid algo-container">
+  <div class="d-flex flex-wrap">
+    <div class="input-contaniner border border-2 border-{{ colorScheme }} rounded col-12 my-2 px-4 pt-4 pb-3">
+      <div id="inputView">
+        <div class="fs-4 mb-4">Enter Lines Coordinates</div>
+        <div class="d-flex align-items-center col-12 fs-5 px-2 my-3 border rounded">
+          <table class="table table-borderless">
+            <thead>
+              <tr class="text-center">
+                <th colspan="3" scope="col">Point 1</th>
+                <th colspan="2" scope="col">Point 2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center">
+                <th class="text-start">Line 01</th>
+                <td>
+                  <input type="number" class="col-lg-8 col-12" name="l1p1x" id="l1p1x" placeholder="x1" />
+                </td>
+                <td>
+                  <input type="number" class="col-lg-8 col-12" name="l1p1y" id="l1p1y" placeholder="y1" />
+                </td>
+                <td>
+                  <input type="number" class="col-lg-8 col-12" name="l1p2x" id="l1p2x" placeholder="x2" />
+                </td>
+                <td>
+                  <input type="number" class="col-lg-8 col-12" name="l1p2x" id="l1p2y" placeholder="y2" />
+                </td>
+              </tr>
+              <tr class="text-center">
+                {% if algorithm == 'slope_line_method' %}
+                <th class="text-start">Point</th>
+                {% else %}
+                <th>Line 02</th>
+                {% endif %}
+                <td>
+                  <input type="number" class="col-lg-8 col-12" name="l2p1x" id="l2p1x" placeholder="x1" />
+                </td>
+                <td>
+                  <input type="number" class="col-lg-8 col-12" name="l2p1y" id="l2p1y" placeholder="y1" />
+                </td>
+
+                {% if algorithm == 'slope_line_method' %}
+              <tr class="text-center">
+                <td colspan="2"></td> <!-- Empty cells for x2 and y2 when using slope_line_method -->
+              </tr>
+              {% else %}
+              <td>
+                <input type="number" class="col-lg-8 col-12" name="l2p2x" id="l2p2x" placeholder="x2" />
+              </td>
+              <td>
+                <input type="number" class="col-lg-8 col-12" name="l2p2y" id="l2p2y" placeholder="y2" />
+              </td>
+              {% endif %}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div style="font-size: 0.7rem;">Input positive or negative number for x/y.</div>
+    </div>
+  </div>
+  <div id="graphs-div" class="algo-div my-3 col-12"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'CHS_App/CHS Logo_white_bg.png' %}" />
+
+    <!-- Personal -->
+    <link href="{% static 'CHS_App/base.css' %}" rel="stylesheet" />
+    {% block ExtraHeaders %}
+
+    {% endblock %}
+    <title>
+      {% block title %}
+        CHS
+      {% endblock %}
+    </title>
+  </head>
+
+  <body>
+    {% block navbar %}
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center" href="{% url 'CHS_App:main' %}">
+            <img src="{% static 'CHS_App/CHS Logo.png' %}" alt="Logo" width="50" height="50" class="d-inline-block align-text-top" />
+            <div id="logo_chs" class="mx-2 fs-4">Convex Hull Simulator</div>
+            <script>
+              document.addEventListener('DOMContentLoaded', () => {
+                // Initial update
+                updateTextBasedOnScreenSize()
+              
+                // Update text when the window is resized
+                window.addEventListener('resize', updateTextBasedOnScreenSize)
+              })
+              
+              function updateTextBasedOnScreenSize() {
+                var screenWidth = window.innerWidth
+                var logo_chs_div = document.getElementById('logo_chs')
+              
+                if (screenWidth < 425) {
+                  logo_chs_div.textContent = 'CHS'
+                } else {
+                  logo_chs_div.textContent = 'Convex Hull Simulator'
+                }
+              }
+            </script>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item me-3">
+                <a class="nav-link" href="{% url 'CHS_App:main' %}">Home</a>
+              </li>
+              <li class="nav-item me-3">
+                <div class="dropdown">
+                  <button class="allocation_dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Algorithms</button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <h1 class="dropdown-header">Line Intersection</h1>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'CHS_App:line_intersection' 1 %}">CCW</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'CHS_App:line_intersection' 2 %}">Slope Line Method</a>
+                      <a class="dropdown-item" href="{% url 'CHS_App:line_intersection' 3 %}">Cramer's Rule</a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                      <h1 class="dropdown-header">Convex Hull</h1>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'CHS_App:algorithm' 'brute_force' %}">Brute Force</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'CHS_App:algorithm' 'jarvis_march' %}">Jarvis March</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'CHS_App:algorithm' 'graham_scan' %}">Graham Scan</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'CHS_App:algorithm' 'quick_hull' %}">Quick Hull</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{% url 'CHS_App:algorithm' 'monotone_chain' %}">Monotone Chain</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item me-3">
+                <a class="nav-link" href="{% url 'CHS_App:team' %}">Our Team</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    {% endblock %}
+    <div class="container-xxl" style="min-height: 70vh;">
+      {% block body %}
+
+      {% endblock %}
+    </div>
+  </body>
+</html>

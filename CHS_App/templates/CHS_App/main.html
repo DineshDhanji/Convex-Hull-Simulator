@@ -1,0 +1,206 @@
+{% extends 'CHS_App/base.html' %}
+{% load static %}
+
+{% block ExtraHeaders %}
+  <link href="{% static 'CHS_App/main.css' %}" rel="stylesheet" />
+  <script src="{% static 'CHS_App/main.js' %}"></script>
+  <!-- VANTA.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <!-- Slider -->
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      height: max-content;
+      background-color: #ffffff;
+    }
+    #choice-d {
+      height: 100vh;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div id="choice-d" class="container-fluid p-3 dd1">
+    <div class="d-flex flex-column align-items-center justify-content-center mt-5 rounded p-3" style="height: max-content;">
+      <div class="display-3">What do you seek 🤔</div>
+      <div class="mt-3 mb-2 col-9 d-flex flex-wrap justify-content-evenly">
+        <button class="btn btn-outline-primary lead mt-3 mx-1" onclick="showLineIntersectionContainer()" style="    --bs-btn-bg: white;">Line Intersection</button>
+        <button class="btn btn-outline-danger lead mt-3 mx-1" onclick="showConvexHullContainer()" style="    --bs-btn-bg: white;">Convex Hull</button>
+      </div>
+    </div>
+
+    <div id="lineIntersectionContainer" class="flex-wrap justify-content-center align-items-center my-4">
+      <section id="lineIntersectionContainerCarousel" class="splide col-12" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
+        <div class="splide__arrows">
+          <button class="splide__arrow splide__arrow--prev"><i class="bi bi-arrow-left"></i></button>
+          <button class="splide__arrow splide__arrow--next"><i class="bi bi-arrow-right"></i></button>
+        </div>
+
+        <div class="splide__track">
+          <ul class="splide__list d-flex justify-content-evenly">
+            <li class="splide__slide">
+              <div class="card p-0 mx-3 my-2" style="width: 18rem; min-width: 18rem;">
+                <div style="font-size: 4rem;" class="bg-info-subtle fw-light card-head border-bottom border-info border-4">CCW</div>
+                <div class="card-body">
+                  <h5 class="card-title fw-normal fs-4">CCW</h5>
+                  <p class="card-text fs-6">lorem loreml or e ml o rem lo rem lo re m lor e ml orem vv lo reml ore mlor em vlo reml ore mv</p>
+                  <a href="{% url 'CHS_App:line_intersection' '1' %}"><button type="button" class="btn btn-outline-info col-12">Explore</button></a>
+                </div>
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card p-0 mx-3 my-2" style="width: 18rem; min-width: 18rem;">
+                <div style="font-size: 4rem;" class="bg-dark-subtle fw-light card-head border-bottom border-dark border-4">SLM</div>
+                <div class="card-body">
+                  <h5 class="card-title fw-normal fs-4">Slop Line Method</h5>
+                  <p class="card-text fs-6">lorem loreml or e ml o rem lo rem lo re m lor e ml orem vv lo reml ore mlor em vlo reml ore mv</p>
+                  <a href="{% url 'CHS_App:line_intersection' '2' %}"><button type="button" class="btn btn-outline-dark col-12">Explore</button></a>
+                </div>
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card p-0 mx-3 my-2" style="width: 18rem; min-width: 18rem;">
+                <div style="font-size: 4rem;" class="bg-success-subtle fw-light card-head border-bottom border-success border-4">CR</div>
+                <div class="card-body">
+                  <h5 class="card-title fw-normal fs-4">Cramer's Rule</h5>
+                  <p class="card-text fs-6">lorem loreml or e ml o rem lo rem lo re m lor e ml orem vv lo reml ore mlor em vlo reml ore mv</p>
+                  <a href="{% url 'CHS_App:line_intersection' '3' %}"><button type="button" class="btn btn-outline-success col-12">Explore</button></a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <script>
+        var a = new Splide('#lineIntersectionContainerCarousel', {
+          // type: 'loop',
+          drag: 'free',
+          perPage: 3,
+          gap: '2rem',
+          focus: 'center',
+          //height   : '100rem',
+          autoplay: true,
+          wheel: true,
+          lazyLoad: 'nearby',
+          autoWidth: true
+        })
+        
+        a.mount()
+      </script>
+    </div>
+    <div id="convexHullContainer" class="flex-wrap justify-content-center align-items-center my-4">
+      <section id="convexHullContainerCarousel" class="splide col-12" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
+        <div class="splide__arrows">
+          <button class="splide__arrow splide__arrow--prev"><i class="bi bi-arrow-left"></i></button>
+          <button class="splide__arrow splide__arrow--next"><i class="bi bi-arrow-right"></i></button>
+        </div>
+
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <div class="card p-0 mx-3 my-2" style="width: 18rem; min-width: 18rem;">
+                <div style="font-size: 4rem;" class="bg-primary-subtle fw-light card-head border-bottom border-primary border-4">BF</div>
+                <div class="card-body">
+                  <h5 class="card-title fw-normal fs-4">Brute Force</h5>
+                  <p class="card-text" style="font-size: 0.9rem;">Unleash the Brute Force beast! 🦁 Tackling Convex Hulls like a determined detective, it checks every nook and cranny—maybe not the fastest, but your trusty geometry sidekick! 🕵️‍♂️💪</p>
+                  <a href="{% url 'CHS_App:algorithm' 'brute_force' %}"><button type="button" class="btn btn-outline-primary col-12">Explore</button></a>
+                </div>
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card p-0 mx-3 my-2" style="width: 18rem; min-width: 18rem;">
+                <div style="font-size: 4rem;" class="bg-secondary-subtle fw-light card-head border-bottom border-secondary border-4">JM</div>
+                <div class="card-body">
+                  <h5 class="card-title fw-normal fs-4">Jarvis March</h5>
+                  <p class="card-text mb-4" style="font-size: 0.9rem;">Jarvis March, the James Bond of Convex Hulls—sophisticated, choosing points with the suavest polar angles. It's like geometry with a touch of class! 🕶️🌐</p>
+                  <a href="{% url 'CHS_App:algorithm' 'jarvis_march' %}"><button type="button" class="btn btn-outline-secondary col-12 mt-3">Explore</button></a>
+                </div>
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card p-0 mx-3 my-2" style="width: 18rem; min-width: 18rem;">
+                <div style="font-size: 4rem;" class="bg-success-subtle fw-light card-head border-bottom border-success border-4">GS</div>
+                <div class="card-body">
+                  <h5 class="card-title fw-normal fs-4">Graham Scan</h5>
+                  <p class="card-text mb-5" style="font-size: 0.9rem;">The disco dancer of Convex Hulls, grooving through points with flair and sorting them by polar angles—geometry with a funky twist! 💃🕺🌐</p>
+                  <a href="{% url 'CHS_App:algorithm' 'graham_scan' %}"><button type="button" class="btn btn-outline-success col-12 mt-3">Explore</button></a>
+                </div>
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card p-0 mx-3 my-2" style="width: 18rem; min-width: 18rem;">
+                <div style="font-size: 4rem;" class="bg-danger-subtle fw-light card-head border-bottom border-danger border-4">QH</div>
+                <div class="card-body">
+                  <h5 class="card-title fw-normal fs-4">Quick Hull</h5>
+                  <p class="card-text" style="font-size: 0.9rem;">Zoom, zoom! Quick Hull is the Flash of Convex Hulls, dividing and conquering points at superhero speed. Saving the day faster than you can say "polygonal adventure"! ⚡💨</p>
+                  <a href="{% url 'CHS_App:algorithm' 'quick_hull' %}"><button type="button" class="btn btn-outline-danger col-12">Explore</button></a>
+                </div>
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="card p-0 mx-3 my-2" style="width: 18rem; min-width: 18rem;">
+                <div style="font-size: 4rem;" class="bg-warning-subtle fw-light card-head border-bottom border-warning border-4">MC</div>
+                <div class="card-body">
+                  <h5 class="card-title fw-normal fs-4">Monotone Chain</h5>
+                  <p class="card-text" style="font-size: 0.9rem;">Like a GPS for points, it sorts them like a meticulous organizer at a chaotic party, then ingeniously builds a "no-entry" zone for outliers—because even points need VIP access to the convex hull party! 🕺💃</p>
+                  <a href="{% url 'CHS_App:algorithm' 'monotone_chain' %}"><button type="button" class="btn btn-outline-warning col-12">Explore</button></a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <script>
+        var b = new Splide('#convexHullContainerCarousel', {
+          // type: 'loop',
+          drag: 'free',
+          perPage: 3,
+          gap: '1rem',
+          focus: 'center',
+          //height   : '100rem',
+          autoplay: true,
+          wheel: true,
+          lazyLoad: 'nearby',
+          autoWidth: true
+        })
+        
+        b.mount()
+      </script>
+    </div>
+  </div>
+
+  <script>
+    let vantaInstance
+    document.addEventListener('DOMContentLoaded', () => {
+      initVanta()
+    })
+    
+    function initVanta() {
+      vantaInstance = VANTA.NET({
+        el: '#choice-d',
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        scale: 1.0,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scaleMobile: 1.0,
+        //color: 0x6c3fff
+        color: 0x0,
+        backgroundColor: 0xffffff
+      })
+    }
+    
+    function refreshVanta() {
+      // Destroy the existing VANTA.NET instance
+      vantaInstance.destroy()
+    
+      // Initialize a new VANTA.NET instance
+      initVanta()
+    }
+  </script>
+{% endblock %}

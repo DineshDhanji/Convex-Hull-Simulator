@@ -1,0 +1,46 @@
+.t-d {
+    height: 15rem;
+    width: 14rem;
+    position: relative;
+    transition: 0.2s ease-in;
+    cursor: pointer;
+}
+.t-d:hover
+{
+    transform: scale(1.023);
+}
+
+.t-p-d {
+    height: 11rem;
+    width: 11rem;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    background-color: white;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #FC6C85;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.t-p-d img {
+    border-radius: 50%;
+}
+
+.t-n-d
+{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.t-l-d
+{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

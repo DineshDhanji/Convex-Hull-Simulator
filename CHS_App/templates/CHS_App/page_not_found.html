@@ -1,0 +1,19 @@
+{% extends 'CHS_App/base.html' %}
+{% load static %}
+
+{% block ExtraHeaders %}
+  <link href="{% static 'CHS_App/main.css' %}" rel="stylesheet" />
+  <style>
+    .heading404 {
+      font-size: 10rem;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="d-flex flex-column justify-content-center align-items-center" style="height: 500px;">
+    <div></div>
+    <div class="heading404 fw-light">404</div>
+    <div class="lead">Page Not Found <b>(</b>。_。<b>)</b></div>
+  </div>
+{% endblock %}
